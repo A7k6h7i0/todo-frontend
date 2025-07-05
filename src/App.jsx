@@ -8,7 +8,7 @@ function App() {
   const BASE_URL = "https://todo-app-30vz.onrender.com"
 
   useEffect(() => {
-    axios.get(`$https://todo-app-30vz.onrender.com/todos`)
+    axios.get(`$BASE_URL/todos`)
       .then(res => setTodos(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -16,7 +16,7 @@ function App() {
 
   const handleAddTodo = () => {
     if (title.trim() === '') return;
-    axios.post(`$https://todo-app-30vz.onrender.com/todos`, { title })
+    axios.post(`$BASE_URL/todos`, { title })
       .then(res => {
         setTodos([...todos, res.data]);
         setTitle('');
@@ -24,7 +24,7 @@ function App() {
     };
 
   const handleDelete = (id) => {
-    axios.delete(`$https://todo-app-30vz.onrender.com/todos/${id}`)
+    axios.delete(`$BASE_URL/todos/${id}`)
       .then(() => {
         setTodos(todos.filter(todo => todo.id !== id));
       })
